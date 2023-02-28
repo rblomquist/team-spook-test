@@ -1,0 +1,39 @@
+{
+  "name": "busesdatabase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc -w",
+    "start": "tsc && nodemon  ./dist/server.js",
+    "dev_start": "tsc && node ./dist/server.js",
+    "swagger-autogen": "node ./swagger.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.9",
+    "@google-cloud/local-auth": "^2.1.0",
+    "apollo-server": "^3.11.1",
+    "apollo-server-express": "^3.11.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.3",
+    "googleapis": "^105.0.0",
+    "graphql": "^16.6.0",
+    "http-status-codes": "^2.2.0",
+    "mongodb": "^5.0.0",
+    "mongoose": "^6.9.0",
+    "swagger-autogen": "^2.23.0",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
