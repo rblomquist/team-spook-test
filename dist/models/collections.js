@@ -1,7 +1,11 @@
 //Refleja la estructura de datos de la base de datos.
 import { Schema, model } from "mongoose";
 const customerSchema = new Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
         type: String,
         required: true,
     },
@@ -13,12 +17,62 @@ const customerSchema = new Schema({
         type: String,
         required: true,
     },
+    emergency_phone: {
+        type: String,
+        required: true,
+    },
+    passport: {
+        type: String,
+        required: true
+    },
     seat: {
         type: Number,
         required: true,
     },
 });
+const guideSchema = new Schema({
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    languages: {
+      type: String,
+      required: true,
+    },
+    bio: {
+      type: String,
+      required: true
+    },
+    databaseAccessLevel: {
+      type: Number,
+      required: true,
+    },
+});
 const busSchema = new Schema({
+    Name: {
+        type: String,
+        required: true,
+    },
+    Description: {
+        type: String,
+        required: true,
+    },
+    Tour_Guide: {
+        type: String,
+        required: true,
+    },
     Total_Seat: {
         type: Number,
         required: true,
@@ -51,5 +105,6 @@ const userSchemaGoogleAuth = new Schema({
 });
 export const UserGoogleAuth = model("usergoogleauths", userSchemaGoogleAuth);
 export const Customer = model("Customer", customerSchema);
+export const Guide = model("Guide", guideSchema);
 export const Bus = model("Bus", busSchema);
 export const User = model("users", userSchema);

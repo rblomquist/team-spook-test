@@ -26,15 +26,15 @@ export const customerResolvers = {
     Mutation: {
         createCustomer: async (_, args) => {
             const sanitizedArgs = sanitize(args);
-            const { name, email, phone, seat } = sanitizedArgs;
-            const newCostumer = new Customer({ name, email, phone, seat });
+            const { firstName, lastName, email, phone, emergency_phone, passport, seat } = sanitizedArgs;
+            const newCostumer = new Customer({ firstName, lastName, email, phone, emergency_phone, passport, seat });
             await newCostumer.save();
             return newCostumer;
         },
         updateCustomer: async (_, args) => {
             const sanitizedArgs = sanitize(args);
-            const { id, name, email, phone, seat } = sanitizedArgs;
-            return await Customer.findByIdAndUpdate(id, { $set: { name, email, phone, seat } }, { new: true });
+            const { id, firstName, lastName, email, phone, emergency_phone, passport, seat } = sanitizedArgs;
+            return await Customer.findByIdAndUpdate(id, { $set: { firstName, lastName, email, phone, emergency_phone, passport, seat } }, { new: true });
         },
         deleteCustomer: async (_, args) => {
             try {

@@ -25,8 +25,8 @@ export const busResolvers = {
   Mutation: {
     createBus: async (_, args) => {
       const sanitizedArgs = sanitize(args)
-      const { Total_Seat, Empty_Seat, Full_Seat, Patent } =sanitizedArgs;
-      const bus = new Bus({ Total_Seat, Empty_Seat, Full_Seat, Patent });
+      const { Name, Description, Tour_Guide, Total_Seat, Empty_Seat, Full_Seat, Patent } =sanitizedArgs;
+      const bus = new Bus({ Name, Description, Tour_Guide, Total_Seat, Empty_Seat, Full_Seat, Patent });
       return await bus.save();
     },
     updateBus: async (
@@ -34,10 +34,10 @@ export const busResolvers = {
       args
     ) => {
       const sanitizedArgs=sanitize(args)
-      const { id, Total_Seat, Empty_Seat, Full_Seat, Patent } = sanitizedArgs
+      const { id, Name, Description, Tour_Guide, Total_Seat, Empty_Seat, Full_Seat, Patent } = sanitizedArgs
       return await Bus.findByIdAndUpdate(
         id,
-        { $set: { Total_Seat, Empty_Seat, Full_Seat, Patent } },
+        { $set: { Name, Description, Tour_Guide, Total_Seat, Empty_Seat, Full_Seat, Patent } },
         { new: true }
       );
     },

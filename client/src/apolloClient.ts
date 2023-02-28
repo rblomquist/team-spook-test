@@ -4,10 +4,27 @@ export const GET_ALL_CUSTOMERS = gql`
   query {
     getAllcustomers {
       _id
-      name
+      firstName
+      lastName
       email
       phone
+      emergency_phone
+      passport
       seat
+    }
+  }
+`;
+export const GET_ALL_GUIDESS = gql`
+  query {
+    getAllGuides {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      languages
+      bio
+      databaseAccessLevel
     }
   }
 `;

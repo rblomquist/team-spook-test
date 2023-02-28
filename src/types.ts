@@ -1,10 +1,23 @@
 export type CustomersInput = {
-    name: string,
+    firstName: string,
+    lastName: string,
     email: string,
     phone: string,
+    emergency_phone: string,
+    passport: string,
     seat: number,
   }
 
+export type GuidesInput = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    languages: string,
+    bio: string,
+    databaseAccessLevel: number,
+}
+
 export type BusesInput={
-    Total_Seat:number,Empty_Seat:number,Full_Seat:number,Patent:String
+  Name:string,Description:string,Tour_Guide:string, Total_Seat:number,Empty_Seat:number,Full_Seat:number,Patent:string
 }
