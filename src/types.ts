@@ -5,7 +5,7 @@ export type CustomersInput = {
     phone: string,
     emergency_phone: string,
     passport: string,
-    seat: number,
+    seat: number
   }
 
 export type GuidesInput = {
@@ -15,7 +15,20 @@ export type GuidesInput = {
     phone: string,
     languages: string,
     bio: string,
-    databaseAccessLevel: number,
+    databaseAccessLevel: number
+}
+
+export type DestinationsInput = {
+  country: string,
+  city: string,
+  currency: string,
+  language: string,
+  description: string,
+  meals: string,
+  lodging: string,
+  price: number,
+  Bus_id: number,
+  image: string
 }
 
 export type BusesInput={

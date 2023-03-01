@@ -14,7 +14,7 @@ export const GET_ALL_CUSTOMERS = gql`
     }
   }
 `;
-export const GET_ALL_GUIDESS = gql`
+export const GET_ALL_GUIDES = gql`
   query {
     getAllGuides {
       _id
@@ -25,6 +25,23 @@ export const GET_ALL_GUIDESS = gql`
       languages
       bio
       databaseAccessLevel
+    }
+  }
+`;
+export const GET_ALL_DESTINATIONS = gql`
+  query {
+    getAllDestinations {
+      _id
+      country
+      city
+      currency
+      language
+      description
+      meals
+      lodging
+      price
+      Bus_id
+      image
     }
   }
 `;

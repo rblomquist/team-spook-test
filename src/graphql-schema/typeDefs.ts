@@ -42,6 +42,20 @@ export const typeDefs = gql`
     databaseAccessLevel: Int
   }
 
+  type Destination {
+    _id: ID
+    country: String
+    city: String
+    currency: String
+    language: String
+    description: String
+    meals: String
+    lodging: String
+    price: Int
+    Bus_id: Int
+    image: Url
+  }
+
   type Bus {
     _id: ID!
     Name: String!
@@ -56,6 +70,10 @@ export const typeDefs = gql`
   type Query {
     getAllcustomers: [Customer]
     getCustomerbyId(id: ID!): Customer
+    getAllguides: [Guide]
+    getGuidebyId(id: ID!): Guide
+    getAllDestinations: [Destination]
+    getDestinationbyId(id: ID!): Destination
     getAllBuses: [Bus]!
     getBusesbyId(id: ID!): Bus
     getUserbyEmail(email: String!): User
@@ -112,6 +130,32 @@ export const typeDefs = gql`
       databaseAccessLevel: Int
     ): Guide!
     deleteGuide(id: ID!): String!
+    createDestination(
+      country: String
+      city: String
+      currency: String
+      language: String
+      description: String
+      meals: String
+      lodging: String
+      price: Int
+      Bus_id: Int
+      image: Url
+    ): Destination!
+    updateDestination(
+      _id: ID
+      country: String
+      city: String
+      currency: String
+      language: String
+      description: String
+      meals: String
+      lodging: String
+      price: Int
+      Bus_id: Int
+      image: Url
+    ): Destination!
+    deleteDestination(id: ID!): String!
     createBus(
       Name: String!
       Description: String!

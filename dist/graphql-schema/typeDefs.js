@@ -41,6 +41,20 @@ export const typeDefs = gql `
     databaseAccessLevel: Int
   }
 
+  type Destination {
+    _id: ID
+    country: String
+    city: String
+    currency: String
+    language: String
+    description: String
+    meals: String
+    lodging: String
+    price: Int
+    Bus_id: Int
+    image: String
+  }
+
   type Bus {
     _id: ID!
     Name: String!
@@ -57,6 +71,8 @@ export const typeDefs = gql `
     getCustomerbyId(id: ID!): Customer
     getAllguides: [Guide]
     getGuidebyId(id: ID!): Guide
+    getAllDestinations: [Destination]
+    getDestinationbyId(id: ID!): Destination
     getAllBuses: [Bus]!
     getBusesbyId(id: ID!): Bus
     getUserbyEmail(email: String!): User
@@ -94,15 +110,6 @@ export const typeDefs = gql `
     ): Customer!
     deleteCustomer(id: ID!): String!
     createGuide(
-      firstName: String
-      lastName: String
-      email: String
-      phone: String
-      languages: String
-      bio: String
-      databaseAccessLevel: Int
-    ): Guide!
-    updateGuide(
       _id: ID!
       firstName: String
       lastName: String
@@ -112,7 +119,44 @@ export const typeDefs = gql `
       bio: String
       databaseAccessLevel: Int
     ): Guide!
+    updateGuide(
+      _id: ID
+      firstName: String
+      lastName: String
+      email: String
+      phone: String
+      languages: String
+      bio: String
+      databaseAccessLevel: Int
+    ): Guide!
     deleteGuide(id: ID!): String!
+    createDestination(
+      _id: ID!
+      country: String
+      city: String
+      currency: String
+      language: String
+      description: String
+      meals: String
+      lodging: String
+      price: Int
+      Bus_id: Int
+      image: String
+    ): Destination!
+    updateDestination(
+      _id: ID
+      country: String
+      city: String
+      currency: String
+      language: String
+      description: String
+      meals: String
+      lodging: String
+      price: Int
+      Bus_id: Int
+      image: String
+    ): Destination!
+    deleteDestination(id: ID!): String!
     createBus(
       Name: String!
       Description: String!

@@ -28,7 +28,7 @@ const customerSchema = new Schema({
     seat: {
         type: Number,
         required: true,
-    },
+    }
 });
 const guideSchema = new Schema({
     firstName: {
@@ -58,7 +58,49 @@ const guideSchema = new Schema({
     databaseAccessLevel: {
       type: Number,
       required: true,
+    }
+});
+const destinationSchema = new Schema({
+    country: {
+      type: String,
+      required: true,
     },
+    city: {
+      type: String,
+      required: true,
+    },
+    currency: {
+      type: String,
+      required: true,
+    },
+    language: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    meals: {
+      type: String,
+      required: true
+    },
+    lodging: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    Bus_id: {
+      type: Number,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true,
+    }
 });
 const busSchema = new Schema({
     Name: {
@@ -88,7 +130,7 @@ const busSchema = new Schema({
     Patent: {
         type: String,
         required: true,
-    },
+    }
 });
 const userSchema = new Schema({
     email: { type: String, required: true },
@@ -106,5 +148,6 @@ const userSchemaGoogleAuth = new Schema({
 export const UserGoogleAuth = model("usergoogleauths", userSchemaGoogleAuth);
 export const Customer = model("Customer", customerSchema);
 export const Guide = model("Guide", guideSchema);
+export const Destination = model("Destination", destinationSchema);
 export const Bus = model("Bus", busSchema);
 export const User = model("users", userSchema);
