@@ -152,9 +152,9 @@ const userSchemaGoogleAuth = new Schema({
   googleExpiryDate: { type: String },
 });
 
-export const UserGoogleAuth = model("usergoogleauths", userSchemaGoogleAuth);
+export const UserGoogleAuth = model("UserGoAuths", userSchemaGoogleAuth);
 export const Customer = model("Customer", customerSchema);
 export const Guide = model("Guide", guideSchema);
 export const Destination = model("Destination", destinationSchema);
 export const Bus = model("Bus", busSchema);
-export const User = model("users", userSchema);
+export const User = model("Users", userSchema);
