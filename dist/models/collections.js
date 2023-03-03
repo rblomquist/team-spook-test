@@ -32,74 +32,74 @@ const customerSchema = new Schema({
 });
 const guideSchema = new Schema({
     firstName: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     lastName: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     email: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     phone: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     languages: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     bio: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     databaseAccessLevel: {
-      type: Number,
-      required: true,
+        type: Number,
+        required: true,
     }
 });
 const destinationSchema = new Schema({
     country: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     city: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     currency: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     language: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     description: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     meals: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     lodging: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     price: {
-      type: Number,
-      required: true,
+        type: Number,
+        required: true,
     },
     Bus_id: {
-      type: Number,
-      required: true
+        type: Number,
+        required: true
     },
     image: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     }
 });
 const busSchema = new Schema({

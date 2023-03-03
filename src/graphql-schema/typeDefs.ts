@@ -53,7 +53,7 @@ export const typeDefs = gql`
     lodging: String
     price: Int
     Bus_id: Int
-    image: Url
+    image: String
   }
 
   type Bus {
@@ -111,13 +111,13 @@ export const typeDefs = gql`
     ): Customer!
     deleteCustomer(id: ID!): String!
     createGuide(
-      firstName: String
-      lastName: String
-      email: String
-      phone: String
-      languages: String
-      bio: String
-      databaseAccessLevel: Int
+      firstName: String!
+      lastName: String!
+      email: String!
+      phone: String!
+      languages: String!
+      bio: String!
+      databaseAccessLevel: Int!
     ): Guide!
     updateGuide(
       _id: ID!

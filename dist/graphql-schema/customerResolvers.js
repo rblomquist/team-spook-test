@@ -16,7 +16,7 @@ export const customerResolvers = {
         getCustomerbyId: async (_, args) => {
             try {
                 const customer = await Customer.findById(args.id);
-                return ManageQueryAnswer(customer, "Customer");
+                return ManageQueryAnswer(customer, "Bus");
             }
             catch (error) {
                 ErrorHandling(error);

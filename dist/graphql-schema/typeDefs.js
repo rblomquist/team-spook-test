@@ -52,7 +52,7 @@ export const typeDefs = gql `
     lodging: String
     price: Int
     Bus_id: Int
-    image: String
+    image: Url
   }
 
   type Bus {
@@ -110,7 +110,6 @@ export const typeDefs = gql `
     ): Customer!
     deleteCustomer(id: ID!): String!
     createGuide(
-      _id: ID!
       firstName: String
       lastName: String
       email: String
@@ -120,7 +119,7 @@ export const typeDefs = gql `
       databaseAccessLevel: Int
     ): Guide!
     updateGuide(
-      _id: ID
+      _id: ID!
       firstName: String
       lastName: String
       email: String
@@ -131,7 +130,6 @@ export const typeDefs = gql `
     ): Guide!
     deleteGuide(id: ID!): String!
     createDestination(
-      _id: ID!
       country: String
       city: String
       currency: String
@@ -141,7 +139,7 @@ export const typeDefs = gql `
       lodging: String
       price: Int
       Bus_id: Int
-      image: String
+      image: Url
     ): Destination!
     updateDestination(
       _id: ID
@@ -154,9 +152,17 @@ export const typeDefs = gql `
       lodging: String
       price: Int
       Bus_id: Int
-      image: String
+      image: Url
     ): Destination!
     deleteDestination(id: ID!): String!
+    createBus(
+      Name: String!
+      Description: String!
+      Tour_Guide: String!
+      Total_Seat: Int!
+      Empty_Seat: Int!
+      Full_Seat: Int!
+      Patent: String!
     createBus(
       Name: String!
       Description: String!
@@ -168,9 +174,9 @@ export const typeDefs = gql `
     ): Bus!
     updateBus(
       id: ID!
-      Name: String!
-      Description: String!
-      Tour_Guide: String!
+      Name: String
+      Description: String
+      Tour_Guide: String
       Total_Seat: Int
       Empty_Seat: Int
       Full_Seat: Int
