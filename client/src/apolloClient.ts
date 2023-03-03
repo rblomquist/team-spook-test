@@ -1,5 +1,18 @@
 import { ApolloClient, InMemoryCache,gql } from '@apollo/client';
 
+export const GET_ALL_AGENTS = gql`
+  query {
+    getAllAgents {
+      _id
+      email
+      password
+      firstName
+      lastName
+      phone
+      databaseAccessLevel
+    }
+  }
+`;
 export const GET_ALL_CUSTOMERS = gql`
   query {
     getAllcustomers {

@@ -20,6 +20,16 @@ export const typeDefs = gql`
     googleExpiryDate: String
   }
 
+  type Agent {
+    _id: ID
+    email: String
+    password: String
+    firstName: String
+    lastName: String
+    phone: String
+    databaseAccessLevel: Int
+  }
+
   type Customer {
     _id: ID
     firstName: String
@@ -68,6 +78,8 @@ export const typeDefs = gql`
   }
 
   type Query {
+    getAllAgents: [Agent]
+    getAgentbyId(id: ID!): Agent
     getAllcustomers: [Customer]
     getCustomerbyId(id: ID!): Customer
     getAllguides: [Guide]
@@ -90,6 +102,24 @@ export const typeDefs = gql`
       googleExpiryDate: String
     ): UserGoogleAuth!
     registerUser(email: String!, password: String!): User!
+    createAgent(
+      email: String!
+      password: String!
+      firstName: String!
+      lastName: String!
+      phone: String!
+      databaseAccessLevel: Int!
+    ): Agent!
+    updateAgent(
+      id: ID!
+      email: String
+      password: String
+      firstName: String
+      lastName: String
+      phone: String
+      databaseAccessLevel: Int
+    ): Agent!
+    deleteAgent(id: ID!): String!
     createCustomer(
       firstName: String!
       lastName: String!
@@ -111,13 +141,13 @@ export const typeDefs = gql`
     ): Customer!
     deleteCustomer(id: ID!): String!
     createGuide(
-      firstName: String
-      lastName: String
-      email: String
-      phone: String
-      languages: String
-      bio: String
-      databaseAccessLevel: Int
+      firstName: String!
+      lastName: String!
+      email: String!
+      phone: String!
+      languages: String!
+      bio: String!
+      databaseAccessLevel: Int!
     ): Guide!
     updateGuide(
       _id: ID!

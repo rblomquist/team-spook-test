@@ -15,7 +15,7 @@ export const customerResolvers = {
     getCustomerbyId: async (_: void, args) => {
       try {
         const customer = await Customer.findById(args.id);
-        return ManageQueryAnswer(customer, "Bus");
+        return ManageQueryAnswer(customer, "Customer");
       } catch (error) {
         ErrorHandling(error);
       }
@@ -42,7 +42,7 @@ export const customerResolvers = {
       try {
         const customerDeleted = await Customer.findByIdAndDelete(args.id);
         const Answer =
-          customerDeleted && `Bus deleted succesfully : ${customerDeleted}`;
+          customerDeleted && `Customer deleted succesfully : ${customerDeleted}`;
         return ManageQueryAnswer(Answer, "Customer");
       } catch (error) {
         ErrorHandling(error);

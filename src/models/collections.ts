@@ -1,6 +1,33 @@
 //Refleja la estructura de datos de la base de datos.
 import { Schema, model, Types } from "mongoose";
 
+const agentSchema = new Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  passport: {
+    type: String,
+    required: true
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  databaseAccessLevel: {
+    type: Number,
+    required: true,
+  }
+});
+
 const customerSchema = new Schema({
   firstName: {
     type: String,
@@ -152,7 +179,8 @@ const userSchemaGoogleAuth = new Schema({
   googleExpiryDate: { type: String },
 });
 
-export const UserGoogleAuth = model("UserGoAuths", userSchemaGoogleAuth);
+export const UserGoogleAuth = model("usergoogleauths", userSchemaGoogleAuth);
+export const Agent = model("Agent", agentSchema);
 export const Customer = model("Customer", customerSchema);
 export const Guide = model("Guide", guideSchema);
 export const Destination = model("Destination", destinationSchema);
