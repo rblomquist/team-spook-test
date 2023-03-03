@@ -4,6 +4,7 @@ import { ApolloServer } from "apollo-server-express";
 import { mongoConnect } from "./db/index";
 import { busResolvers } from "./graphql-schema/busResolvers";
 import { typeDefs } from "./graphql-schema/typeDefs";
+import { agentResolvers } from "./graphql-schema/agentResolvers";
 import { customerResolvers } from "./graphql-schema/customerResolvers";
 import { guideResolvers } from "./graphql-schema/guideResolvers";
 import { serverErrorHandler } from './utils/ErrorHandling/typesErrors/serverErrorHandler';
@@ -63,7 +64,7 @@ app.post('/verify-password', async (req, res) => {
 async function start() {
   const server = new ApolloServer({
     typeDefs : typeDefs,
-    resolvers: [busResolvers, customerResolvers, guideResolvers, userResolvers],
+    resolvers: [busResolvers, agentResolvers, customerResolvers, guideResolvers, userResolvers],
       introspection: true
   });
   await server.start();
