@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { User } from "../models/collections.js";
+import { User } from "../models/collections";
 
 export const verifyPass = async (email: string, password: string) => {
   try {

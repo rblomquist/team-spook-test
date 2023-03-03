@@ -1,7 +1,7 @@
-import { sanitize } from "../utils/sanitize.js";
-import { Destination } from "../models/collections.js";
-import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling.js";
-import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling.js";
+import { sanitize } from "../utils/sanitize";
+import { Destination } from "../models/collections";
+import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling";
+import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling";
 export const destinationResolvers = {
   Query: {
     getAlldestinations: async () => {

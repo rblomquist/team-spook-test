@@ -1,8 +1,8 @@
-import { sanitize } from "./../utils/sanitize.js";
-import { User } from "../models/collections.js";
-import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling.js";
-import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling.js";
-import { UserGoogleAuth } from "../models/collections.js";
+import { sanitize } from "./../utils/sanitize";
+import { User } from "../models/collections";
+import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling";
+import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling";
+import { UserGoogleAuth } from "../models/collections";
 
 export const userResolvers = {
   Mutation: {

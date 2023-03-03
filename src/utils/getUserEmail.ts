@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
 import path from 'path';
 import { readFileSync } from 'fs';
-import { UserGoogleAuth } from "../models/collections.js";
+import { UserGoogleAuth } from "../models/collections";
 
 const credentialsPath = path.join(process.cwd(), 'credentials.json');
 const credentials = JSON.parse(readFileSync(credentialsPath, 'utf8'));

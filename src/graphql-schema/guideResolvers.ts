@@ -1,7 +1,7 @@
-import { sanitize } from "./../utils/sanitize.js";
-import { Guide } from "../models/collections.js";
-import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling.js";
-import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling.js";
+import { sanitize } from "./../utils/sanitize";
+import { Guide } from "../models/collections";
+import { ErrorHandling } from "../utils/ErrorHandling/ErrorHandling";
+import { ManageQueryAnswer } from "../utils/ErrorHandling/typesErrors/NotFoundErrorHandling";
 export const guideResolvers = {
     Query: {
         getAllguides: async () => {
