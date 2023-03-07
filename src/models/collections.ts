@@ -1,14 +1,10 @@
-//Refleja la estructura de datos de la base de datos.
+//Show the database structure.
 import { Schema, model, Types } from "mongoose";
 
 const agentSchema = new Schema({
   email: {
     type: String,
     required: true,
-  },
-  passport: {
-    type: String,
-    required: true
   },
   firstName: {
     type: String,

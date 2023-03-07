@@ -4,16 +4,10 @@ import 'graphiql/graphiql.css';
 import { useLazyQuery } from '@apollo/client';
 import { gql } from 'graphql-tag';
 import { GET_ALL_AGENTS } from '../../../apolloClient';
-import { GET_ALL_CUSTOMERS } from '../../../apolloClient';
-import { GET_ALL_GUIDES } from '../../../apolloClient';
-import { GET_ALL_DESTINATIONS } from '../../../apolloClient';
 import { print } from 'graphql';
 import './assets/style.css'
 const GraphiQLTab = () => {
   const [query, setQuery] = useState(print(GET_ALL_AGENTS));
-  const [query, setQuery] = useState(print(GET_ALL_CUSTOMERS));
-  const [query, setQuery] = useState(print(GET_ALL_GUIDES));
-  const [query, setQuery] = useState(print(GET_ALL_DESTINATIONS));
 
   const [executeQuery, { loading, data, error }] = useLazyQuery(gql`
     ${query}
