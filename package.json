@@ -4,20 +4,37 @@
   "description": "",
   "main": "server.js",
   "type": "module",
+  "jest": {
+    "roots": [
+      "./dist"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.js?(x)",
+      "**/?(*.)+(spec|test).js?(x)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "ts",
+      "tsx",
+      "node"
+    ]
+  },
   "scripts": {
     "compile": "tsc -w",
     "start": "tsc && nodemon  ./dist/server.js",
     "dev_start": "tsc && node ./dist/server.js",
-    "swagger-autogen": "node ./swagger.js"
+    "swagger-autogen": "node ./swagger.js",
+    "test": "tsc && jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/mongodb": "^4.0.7",
-    "@types/node": "^18.11.18",
-    "typescript": "^4.9.5"
-  },
   "dependencies": {
     "@apollo/client": "^3.7.9",
     "@google-cloud/local-auth": "^2.1.0",
@@ -36,5 +53,21 @@
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.23.0",
     "swagger-ui-express": "^4.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@jest/globals": "^29.5.0",
+    "@types/jest": "^29.4.0",
+    "@types/mongodb": "^4.0.7",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^18.11.18",
+    "babel-jest": "^29.5.0",
+    "esbuild-jest": "^0.5.0",
+    "esm": "^3.2.25",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
   }
 }

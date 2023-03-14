@@ -14,7 +14,6 @@ import { userResolvers } from "./graphql-schema/userResolvers.js";
 
 const app = express();
 const port = 4000;
-mongoConnect()
 // // Ruta de autenticación de Google
 // app.get('/auth/google', (req, res) => {
 //   const authUrl = getGoogleAuthUrl();
@@ -58,13 +57,13 @@ app.post('/verify-password', async (req, res) => {
   }
 });
 
-
-async function start() {
+export async function start() {
   const server = new ApolloServer({
     typeDefs : typeDefs,
     resolvers: [busResolvers, agentResolvers, customerResolvers, guideResolvers, userResolvers],
       introspection: true
   });
+  mongoConnect()
   await server.start();
   server.applyMiddleware({ app });
   app.use(serverErrorHandler);
@@ -81,3 +80,4 @@ async function start() {
 }
 
 start()
+
