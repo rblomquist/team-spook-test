@@ -3,7 +3,7 @@ import path from 'path';
 import { readFileSync } from 'fs';
 import { UserGoogleAuth } from "../models/collections";
 
-const credentialsPath = path.join(process.cwd(), 'credentials.json');
+const credentialsPath = path.join(process.cwd(), 'credential.json');
 const credentials = JSON.parse(readFileSync(credentialsPath, 'utf8'));
 
 const oAuth2Client = new google.auth.OAuth2(
