@@ -5,4 +5,7 @@ client/package-lock.json
 .env
 token.json
 credentials.json
-dist
+=======
+credential.json
+
+>>>>>>> b81dafd (Oauthv2)
