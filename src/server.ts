@@ -1,19 +1,19 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
-import { authorizeWithGoogle, getGoogleAuthUrl } from "./google-auth.js";
-import { mongoConnect } from "./db/index.js";
-import { busResolvers } from "./graphql-schema/busResolvers.js";
-import { typeDefs } from "./graphql-schema/typeDefs.js";
-import { customerResolvers } from "./graphql-schema/customerResolvers.js";
-import { guideResolvers } from "./graphql-schema/guideResolvers.js";
-import { agentResolvers } from "./graphql-schema/agentResolvers.js";
-import { serverErrorHandler } from "./utils/ErrorHandling/typesErrors/serverErrorHandler.js";
-import { userResolvers } from "./graphql-schema/userResolvers.js";
-import { getUserEmail } from "./utils/getUserEmail.js";
+import { authorizeWithGoogle, getGoogleAuthUrl } from "./google-auth";
+import { mongoConnect } from "./db/index";
+import { busResolvers } from "./graphql-schema/busResolvers";
+import { typeDefs } from "./graphql-schema/typeDefs";
+import { customerResolvers } from "./graphql-schema/customerResolvers";
+import { guideResolvers } from "./graphql-schema/guideResolvers";
+import { agentResolvers } from "./graphql-schema/agentResolvers";
+import { serverErrorHandler } from "./utils/ErrorHandling/typesErrors/serverErrorHandler";
+import { userResolvers } from "./graphql-schema/userResolvers";
+import { getUserEmail } from "./utils/getUserEmail";
 import {
   requireGoogleAuth,
   configureCookieParser,
-} from "./utils/google-auth-middleware.js";
+} from "./utils/google-auth-middleware";
 
 const app = express();
 const port = 4000;
