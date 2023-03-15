@@ -4,9 +4,9 @@ import { readFileSync, writeFile } from 'fs';
 import { ParsedQs } from 'qs';
 
 // Lee los datos de las credenciales de Google desde el archivo JSON
-const credentialsPath = path.join(process.cwd(),process.env.NODE_ENV === "development" ? 'credentials.json':"./credentials.json" );
+const credentialsPath = path.join(process.cwd(),process.env.NODE_ENV == "development" ? 'credential.json':"./credential.json" );
 const credentials = JSON.parse(readFileSync(credentialsPath, 'utf8'));
-const REDIRECT_URI = process.env.NODE_ENV === "development" ? 'http://localhost:4000/auth/google/redirect':"https://busesdatabaseapi.onrender.com/auth/google/redirect";
+const REDIRECT_URI = process.env.NODE_ENV == "development" ? 'http://localhost:4000/auth/google/redirect':"https://tourguideagency.onrender.com/auth/google/redirect";
 const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile'];
 
 // Configuración de OAuth 2.0

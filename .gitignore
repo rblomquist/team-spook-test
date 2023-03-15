@@ -4,4 +4,9 @@ client/node_modules
 client/package-lock.json
 .env
 token.json
+<<<<<<< HEAD
 credentials.json
+=======
+credential.json
+
+>>>>>>> b81dafd (Oauthv2)
