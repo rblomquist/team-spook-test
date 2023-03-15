@@ -20,73 +20,105 @@ import {
 
 const app = express();
 const port = 4000;
-// // Ruta de autenticación de Google
-// app.get('/auth/google', (req, res) => {
-//   const authUrl = getGoogleAuthUrl();
-//   res.redirect(authUrl);
-// });
-
-// // Ruta de callback de autenticación de Google
-// app.get('/auth/google/redirect', async (req, res) => {
-//   const { code } = req.query;
-//   const tokens = await authorizeWithGoogle(code);
-//   const email = await getUserEmail(tokens);
-//   console.log('Email:', email); // Agrega un console.log aquí para verificar que el email se esté obteniendo correctamente
-//   try {
-//     await userResolvers.Mutation.registerUserGoogleAuth(null, {
-//       email: email,
-//       googleAccessToken: tokens.access_token,
-//       googleRefreshToken: tokens.refresh_token,
-//       googleScope: tokens.scope,
-//       googleTokenType: tokens.token_type,
-//       googleIdToken: tokens.id_token,
-//       googleExpiryDate: new Date(tokens.expiry_date),
-//     });
-//     console.log('Tokens guardados en la base de datos');
-//   } catch (error) {
-//     console.error(error);
-//   }  
-//   console.log('Tokens guardados en la base de datos'); // Agrega un console.log aquí para verificar que se estén guardando los tokens
-//   res.redirect('/');
-// });
-
-
-app.get('/api-docs',(req,res)=>res.redirect(`https://tourguideagency.onrender.com/graphql`))
-app.post('/verify-password', async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const result = await verifyPass(email, password);
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
+configureCookieParser(app); // Configurar middleware de cookies
+mongoConnect();
+// Ruta de autenticación de Google
+app.get("/auth/google", (req, res) => {
+  console.log("hola /auth/google")
+  const authUrl = getGoogleAuthUrl();
+  res.redirect(authUrl);
 });
 
-async function start() {
+// Ruta de callback de autenticación de Google
+app.get("/auth/google/redirect", async (req, res) => {
+  console.log("hola redirect")
+  const { code } = req.query;
+  const tokens = await authorizeWithGoogle(code);
+  const email = await getUserEmail(tokens);
+  console.log("Email:", email); // Agrega un console.log aquí para verificar que el email se esté obteniendo correctamente
+  try {
+    await userResolvers.Mutation.registerUserGoogleAuth(null, {
+      email: email,
+      googleAccessToken: tokens.access_token,
+      googleRefreshToken: tokens.refresh_token,
+      googleScope: tokens.scope,
+      googleTokenType: tokens.token_type,
+      googleIdToken: tokens.id_token,
+      googleExpiryDate: new Date(tokens.expiry_date),
+    });
+    console.log("Tokens guardados en la base de datos");
+  } catch (error) {
+    console.error(error);
+  }
+  console.log("Tokens guardados en la base de datos"); // Agrega un console.log aquí para verificar que se estén guardando los tokens
+  res.redirect("/");
+});
+
+app.get("/", requireGoogleAuth, (req, res) => {
+  res.send("Welcome to Tourism Agency API");
+});
+app.get("/api-docs", requireGoogleAuth, (req, res) => {
+  res.redirect(
+    process.env.NODE_ENV === "development"
+      ? `http://localhost:${port}/graphql`
+      : `https://tourguideagency.onrender.com/graphql`
+  );
+});
+app.get("/graphql", requireGoogleAuth, (req, res) => {
+  res.redirect(
+    process.env.NODE_ENV == "development"
+      ? `http://localhost:${port}/graphql`
+      : `https://tourguideagency.onrender.com/graphql`
+  );
+});
+
+// dotenv.config();
+
+// const config = {
+//   authRequired: false,
+//   auth0Logout: true,
+//   secret: process.env.SECRET,
+//   baseURL: process.env.BASE_URL,
+//   clientID: process.env.CLIENT_ID,
+//   issuerBaseURL: process.env.ISSUER_BASE_URL
+// };
+
+// // auth router attaches /login, /logout, and /callback routes to the baseURL
+// app.use(auth(config));
+
+// // req.isAuthenticated is provided from the auth router
+// app.get('/', (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
+
+
+// app.get('/api-docs',(req,res)=>res.redirect(`https://tourguideagency.onrender.com/graphql`))
+// app.post('/verify-password', async (req, res) => {
+//   const { email, password } = req.body;
+//   try {
+//     const result = await verifyPass(email, password);
+//     res.json(result);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+
+export async function start() {
   const server = new ApolloServer({
-    typeDefs: typeDefs,
-    resolvers: [
-      busResolvers,
-      agentResolvers,
-      customerResolvers,
-      guideResolvers,
-      userResolvers,
-    ],
-    introspection: true,
+    typeDefs : typeDefs,
+    resolvers: [busResolvers, agentResolvers, customerResolvers, guideResolvers, userResolvers],
+      introspection: true
   });
   mongoConnect()
   await server.start();
   server.applyMiddleware({ app });
   app.use(serverErrorHandler);
   app.use((req, res, next) => {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://tu-usuario-de-github.github.io"
-    );
+    res.setHeader("Access-Control-Allow-Origin", "https://tu-usuario-de-github.github.io");
     next();
   });
-  app.get("*", (req, res) => res.send("404 not found"));
+  app.get('*',(req,res)=>res.send("404 not found"))
   app.listen({ port }, () => {
     console.log(
       `GraphQL Server running at http://localhost:${port}${server.graphqlPath}`
@@ -94,4 +126,5 @@ async function start() {
   });
 }
 
-start();
+start()
+
