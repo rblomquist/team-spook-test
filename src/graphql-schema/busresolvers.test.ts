@@ -99,6 +99,8 @@ test("Updates bus in db", async () => {
     expect(updatedBus.Empty_Seat.toString()).toEqual(args.Empty_Seat);
     expect(updatedBus.Full_Seat.toString()).toEqual(args.Full_Seat);
     expect(updatedBus.Patent).toEqual(args.Patent);
+
+    await Bus.deleteOne({ _id: updatedBus._id });
 });
 
 test("Deletes bus from db", async () => {    

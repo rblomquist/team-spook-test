@@ -119,6 +119,9 @@ test("Updates destination in db", async () => {
     expect(updatedDestination.price.toString()).toEqual(args.price);
     expect(updatedDestination.Bus_id.toString()).toEqual(args.Bus_id);
     expect(updatedDestination.image).toEqual(args.image);
+
+    await Destination.deleteOne({ _id: updatedDestination._id });
+
 });
 
 test("Deletes destination from db", async () => {    

@@ -100,6 +100,9 @@ test("Updates guide in db", async () => {
     expect(updatedGuide.languages).toEqual(args.languages);
     expect(updatedGuide.bio).toEqual(args.bio);
     expect(updatedGuide.databaseAccessLevel.toString()).toEqual(args.databaseAccessLevel);
+
+    await Guide.deleteOne({ _id: updatedGuide._id });
+
 });
 
 test("Deletes guide from db", async () => {    

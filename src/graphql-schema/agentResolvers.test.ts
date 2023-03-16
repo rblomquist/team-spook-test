@@ -59,14 +59,25 @@ const args = {
   });
 
 test("Updates agent in db", async () => {
+    const agent = new Agent({ 
+      email: 'agent@example.com',
+      password: 'password',
+      firstName: 'John',
+      lastName: 'Doe',
+      phone: '1234567890',
+      databaseAccessLevel: 1,
+    });
+
+    const newAgent = await agent.save();
+
     const args = {
-        id: "640bd5e8742837fd3cf47185",
-        email: "updateTest@test.com",
-        firstName: "Test",
-        lastName: "Testerton",
-        phone: "123-456-7890",
-        databaseAccessLevel: 1
-    };
+          id: newAgent._id,
+          email: "updateTest@test.com",
+          firstName: "Test",
+          lastName: "Testerton",
+          phone: "123-456-7890",
+          databaseAccessLevel: 1
+      };
 
     const updatedAgent = await agentResolvers.Mutation.updateAgent(null, args);
 
@@ -76,6 +87,8 @@ test("Updates agent in db", async () => {
     expect(updatedAgent.lastName).toEqual(args.lastName);
     expect(updatedAgent.phone).toEqual(args.phone);
     expect(updatedAgent.databaseAccessLevel.toString()).toEqual(args.databaseAccessLevel);
+
+    await Agent.deleteOne({ _id: updatedAgent._id });
 });
 
 test("Deletes agent from db", async () => {    
