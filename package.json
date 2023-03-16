@@ -28,7 +28,7 @@
   "scripts": {
     "compile": "tsc -w",
     "start": "tsc && nodemon  ./dist/server.js",
-    "dev_start": "tsc && node ./dist/server.js",
+    "dev_start": "tsc && node ./dist/server",
     "swagger-autogen": "node ./swagger.js",
     "test": "tsc && jest"
   },
