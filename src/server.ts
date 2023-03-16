@@ -69,7 +69,7 @@ app.get("/graphql", requireGoogleAuth, (req, res) => {
   );
 });
 
-async function start() {
+export async function start() {
   const server = new ApolloServer({
     typeDefs: typeDefs,
     resolvers: [
