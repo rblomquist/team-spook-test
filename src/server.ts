@@ -1,19 +1,19 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
-import { authorizeWithGoogle, getGoogleAuthUrl } from "./google-auth";
-import { mongoConnect } from "./db/index";
-import { busResolvers } from "./graphql-schema/busResolvers";
-import { typeDefs } from "./graphql-schema/typeDefs";
-import { customerResolvers } from "./graphql-schema/customerResolvers";
-import { guideResolvers } from "./graphql-schema/guideResolvers";
-import { agentResolvers } from "./graphql-schema/agentResolvers";
-import { serverErrorHandler } from "./utils/ErrorHandling/typesErrors/serverErrorHandler";
-import { userResolvers } from "./graphql-schema/userResolvers";
-import { getUserEmail } from "./utils/getUserEmail";
+import { authorizeWithGoogle, getGoogleAuthUrl } from "./google-auth.js";
+import { mongoConnect } from "./db/index.js";
+import { busResolvers } from "./graphql-schema/busResolvers.js";
+import { typeDefs } from "./graphql-schema/typeDefs.js";
+import { customerResolvers } from "./graphql-schema/customerResolvers.js";
+import { guideResolvers } from "./graphql-schema/guideResolvers.js";
+import { agentResolvers } from "./graphql-schema/agentResolvers.js";
+import { serverErrorHandler } from "./utils/ErrorHandling/typesErrors/serverErrorHandler.js";
+import { userResolvers } from "./graphql-schema/userResolvers.js";
+import { getUserEmail } from "./utils/getUserEmail.js";
 import {
   requireGoogleAuth,
   configureCookieParser,
-} from "./utils/google-auth-middleware";
+} from "./utils/google-auth-middleware.js";
 
 const app = express();
 const port = 4000;
@@ -21,14 +21,14 @@ configureCookieParser(app); // Configurar middleware de cookies
 mongoConnect();
 // Ruta de autenticación de Google
 app.get("/auth/google", (req, res) => {
-  console.log("hola /auth/google")
+  console.log("hola /auth/google");
   const authUrl = getGoogleAuthUrl();
   res.redirect(authUrl);
 });
 
 // Ruta de callback de autenticación de Google
 app.get("/auth/google/redirect", async (req, res) => {
-  console.log("hola redirect")
+  console.log("hola redirect");
   const { code } = req.query;
   const tokens = await authorizeWithGoogle(code);
   const email = await getUserEmail(tokens);
@@ -81,7 +81,7 @@ export async function start() {
     ],
     introspection: true,
   });
-  mongoConnect()
+  mongoConnect();
   await server.start();
   server.applyMiddleware({ app });
   app.use(serverErrorHandler);
