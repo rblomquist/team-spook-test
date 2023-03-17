@@ -58,14 +58,14 @@ app.get("/api-docs", requireGoogleAuth, (req, res) => {
   res.redirect(
     process.env.NODE_ENV === "development"
       ? `http://localhost:${port}/graphql`
-      : `https://tourguideagency.onrender.com/graphql`
+      : `https://tourismagency2023.onrender.com/graphql`
   );
 });
 app.get("/graphql", requireGoogleAuth, (req, res) => {
   res.redirect(
     process.env.NODE_ENV == "development"
       ? `http://localhost:${port}/graphql`
-      : `https://tourguideagency.onrender.com/graphql`
+      : `https://tourismagency2023.onrender.com/graphql`
   );
 });
 
