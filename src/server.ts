@@ -26,13 +26,15 @@ app.get("/auth/google", (req, res) => {
   res.redirect(authUrl);
 });
 
+// Google authentication callback route
 // Ruta de callback de autenticación de Google
 app.get("/auth/google/redirect", async (req, res) => {
   console.log("hola redirect");
   const { code } = req.query;
   const tokens = await authorizeWithGoogle(code);
   const email = await getUserEmail(tokens);
-  console.log("Email:", email); // Agrega un console.log aquí para verificar que el email se esté obteniendo correctamente
+  console.log("Email:", email); // Add a console.log here to verify that the email is being fetched correctly
+  // Agrega un console.log aquí para verificar que el email se esté obteniendo correctamente
   try {
     await userResolvers.Mutation.registerUserGoogleAuth(null, {
       email: email,
@@ -43,11 +45,11 @@ app.get("/auth/google/redirect", async (req, res) => {
       googleIdToken: tokens.id_token,
       googleExpiryDate: new Date(tokens.expiry_date),
     });
-    console.log("Tokens guardados en la base de datos");
+    console.log("Tokens saved in the database. Tokens guardados en la base de datos.");
   } catch (error) {
     console.error(error);
   }
-  console.log("Tokens guardados en la base de datos"); // Agrega un console.log aquí para verificar que se estén guardando los tokens
+  console.log("Tokens saved in the database. Tokens guardados en la base de datos"); // Add a console.log here to verify that tokens are being saved. Agrega un console.log aquí para verificar que se estén guardando los tokens
   res.redirect("/");
 });
 
@@ -58,14 +60,14 @@ app.get("/api-docs", requireGoogleAuth, (req, res) => {
   res.redirect(
     process.env.NODE_ENV === "development"
       ? `http://localhost:${port}/graphql`
-      : `https://tourguideagency.onrender.com/graphql`
+      : `https://tourismagency2023.onrender.com/graphql`
   );
 });
 app.get("/graphql", requireGoogleAuth, (req, res) => {
   res.redirect(
     process.env.NODE_ENV == "development"
       ? `http://localhost:${port}/graphql`
-      : `https://tourguideagency.onrender.com/graphql`
+      : `https://tourismagency2023.onrender.com/graphql`
   );
 });
 
