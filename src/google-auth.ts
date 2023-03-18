@@ -3,6 +3,7 @@ import path from 'path';
 import { readFileSync, writeFile } from 'fs';
 import { ParsedQs } from 'qs';
 
+// Read the Google credential data from the JSON file
 // Lee los datos de las credenciales de Google desde el archivo JSON
 const credentialsPath = path.join(process.cwd(),process.env.NODE_ENV === "development" ? 'credentials.json':"./credentials.json" );
 const credentials = JSON.parse(readFileSync(credentialsPath, 'utf8'));
@@ -10,6 +11,7 @@ const credentials = JSON.parse(readFileSync(credentialsPath, 'utf8'));
 const REDIRECT_URI ='https://tourismagency2023.onrender.com/auth/google/redirect';
 const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile'];
 
+// OAuth 2.0 Configuration
 // Configuración de OAuth 2.0
 const oAuth2Client = new google.auth.OAuth2(
     credentials.web.client_id,
@@ -17,15 +19,18 @@ const oAuth2Client = new google.auth.OAuth2(
     REDIRECT_URI
 );
 
+// Google authorization function
 // Función de autorización de Google
 export async function authorizeWithGoogle(code) {
   const { tokens } = await oAuth2Client.getToken(code.toString());
   oAuth2Client.setCredentials(tokens);
+  // Returns access tokens
   // Devuelve los tokens de acceso
   console.log(tokens)
   return tokens;
 }
 
+// Google Authentication Path
 // Ruta de autenticación de Google
 export function getGoogleAuthUrl() {
   const authUrl = oAuth2Client.generateAuthUrl({
@@ -35,6 +40,7 @@ export function getGoogleAuthUrl() {
   return authUrl;
 }
 
+// Function to save access tokens to a file
 // Función para guardar los tokens de acceso en un archivo
 async function saveCredentials(credentials) {
     const tokenPath = path.join(process.cwd(), 'token.json');
