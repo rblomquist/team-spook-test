@@ -21,11 +21,11 @@ const port = 4000;
 mongoConnect();
 app.use(cookieParser())
 app.use(session({
-  secret: process.env.SECRET_KEY, // Cambiar a una cadena segura y secreta en producción
+  secret: process.env.SECRET_KEY, // Switch to a secure and secret string in production. Cambiar a una cadena segura y secreta en producción
   resave: false,
   saveUninitialized: false,
 }));
-// Ruta de autenticación de Google
+// Google Authentication Path. Ruta de autenticación de Google
 app.get("/auth/google", (req, res) => {
   const authUrl = getGoogleAuthUrl();
   res.redirect(authUrl);
