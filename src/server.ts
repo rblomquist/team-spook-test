@@ -41,7 +41,7 @@ app.get("/auth/google/redirect", saveAuthInDatabase, (req, res) => {
 app.get("/", requireGoogleAuth, (req, res) => {
   res.send("Welcome to Tourism Agency API");
 });
-app.get('/api-docs',(req,res)=>res.redirect(`https://tourguideagency.onrender.com/graphql`))
+app.get('/api-docs',(req,res)=>res.redirect(`https://tourismagency2023.onrender.com/graphql`))
 
 
 export async function start() {
