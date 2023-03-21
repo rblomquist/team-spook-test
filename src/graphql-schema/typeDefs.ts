@@ -87,6 +87,7 @@ export const typeDefs = gql`
     getAllBuses: [Bus]
     getBusesbyId(id: ID!): Bus
     getUserbyEmail(email: String!): User
+    getUserAuthByGoogleIdToken(googleIdToken: String!): User
   }
 
   type Mutation {
