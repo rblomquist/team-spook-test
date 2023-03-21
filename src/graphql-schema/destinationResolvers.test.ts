@@ -13,8 +13,9 @@ beforeAll(async () => {
     await mongoose.connection.close();
   });
   
-test ("Gets all destinations", () => {
+test ("Gets all destinations", async () => {
     expect(destinationResolvers.Query.getAlldestinations).not.toThrowError();
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Gets destination by ID number", async () => {
@@ -46,6 +47,7 @@ test("Gets destination by ID number", async () => {
     expect(foundDestination.image).toEqual(newDestination.image);
 
     await Destination.deleteOne({ _id: foundDestination._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Adds destination to db", async () => {
@@ -76,6 +78,7 @@ test("Adds destination to db", async () => {
     expect(newDestination.image).toEqual(destination.image);
 
     await Destination.deleteOne({ _id: newDestination._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
   });
 
 test("Updates destination in db", async () => {
@@ -121,7 +124,7 @@ test("Updates destination in db", async () => {
     expect(updatedDestination.image).toEqual(args.image);
 
     await Destination.deleteOne({ _id: updatedDestination._id });
-
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Deletes destination from db", async () => {    
@@ -155,4 +158,5 @@ test("Deletes destination from db", async () => {
     const deletedDestination = await destinationResolvers.Mutation.deleteDestination(null, { id: foundDestination.id })
 
     expect(deletedDestination).toBe(deletedDestination);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     });

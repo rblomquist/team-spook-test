@@ -13,8 +13,9 @@ beforeAll(async () => {
     await mongoose.connection.close();
   });
   
-test ("Gets all agents", () => {
+test ("Gets all agents", async () => {
     expect(agentResolvers.Query.getAllAgents).not.toThrowError();
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Gets employee by ID number", async () => {
@@ -37,6 +38,7 @@ test("Gets employee by ID number", async () => {
     expect(foundAgent.databaseAccessLevel).toEqual(newAgent.databaseAccessLevel);
 
     await Agent.deleteOne({ _id: agent._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Adds agent to db", async () => {
@@ -56,6 +58,7 @@ const args = {
     expect(newAgent.lastName).toEqual(args.lastName);
 
     await Agent.deleteOne({ _id: newAgent._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
   });
 
 test("Updates agent in db", async () => {
@@ -89,6 +92,7 @@ test("Updates agent in db", async () => {
     expect(updatedAgent.databaseAccessLevel.toString()).toEqual(args.databaseAccessLevel);
 
     await Agent.deleteOne({ _id: updatedAgent._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Deletes agent from db", async () => {    
@@ -111,4 +115,5 @@ test("Deletes agent from db", async () => {
         const deletedAgent = await agentResolvers.Mutation.deleteAgent(null, { id: foundAgent.id })
 
         expect(deletedAgent).toBe(deletedAgent);
+        await new Promise(resolve => setTimeout(resolve, 1000));
     });

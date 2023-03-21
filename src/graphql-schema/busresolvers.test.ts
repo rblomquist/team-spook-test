@@ -13,8 +13,9 @@ beforeAll(async () => {
     await mongoose.connection.close();
   });
   
-test ("Gets all buses", () => {
+test ("Gets all buses", async () => {
     expect(busResolvers.Query.getAllBuses).not.toThrowError();
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Gets bus by ID number", async () => {
@@ -40,6 +41,7 @@ test("Gets bus by ID number", async () => {
     expect(foundBus.Patent).toEqual(newBus.Patent);
 
     await Bus.deleteOne({ _id: foundBus._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Adds bus to db", async () => {
@@ -64,6 +66,7 @@ const bus = {
     expect(newBus.Patent).toEqual(bus.Patent);
 
     await Bus.deleteOne({ _id: newBus._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
   });
 
 test("Updates bus in db", async () => {
@@ -101,6 +104,7 @@ test("Updates bus in db", async () => {
     expect(updatedBus.Patent).toEqual(args.Patent);
 
     await Bus.deleteOne({ _id: updatedBus._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Deletes bus from db", async () => {    
@@ -128,4 +132,5 @@ test("Deletes bus from db", async () => {
         const deletedBus = await busResolvers.Mutation.deleteBus(null, { id: foundBus.id })
 
         expect(deletedBus).toBe(deletedBus);
+        await new Promise(resolve => setTimeout(resolve, 1000));
     });
