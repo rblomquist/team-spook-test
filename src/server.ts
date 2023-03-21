@@ -1,4 +1,5 @@
 import cookieParser from "cookie-parser";
+import session from 'express-session';
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { getGoogleAuthUrl } from "./utils/goAuth/google-auth.js";
@@ -19,6 +20,11 @@ const app = express();
 const port = 4000;
 mongoConnect();
 app.use(cookieParser())
+app.use(session({
+  secret: process.env.SECRET_KEY, // Cambiar a una cadena segura y secreta en producción
+  resave: false,
+  saveUninitialized: false,
+}));
 // Ruta de autenticación de Google
 app.get("/auth/google", (req, res) => {
   const authUrl = getGoogleAuthUrl();
@@ -28,27 +34,15 @@ app.get("/auth/google", (req, res) => {
 // Google authentication callback route
 // Ruta de callback de autenticación de Google
 app.get("/auth/google/redirect", saveAuthInDatabase, (req, res) => {
-  res.redirect("/");
+  res.redirect("/graphql");
 });
 
 
 app.get("/", requireGoogleAuth, (req, res) => {
   res.send("Welcome to Tourism Agency API");
 });
-app.get("/api-docs", requireGoogleAuth, (req, res) => {
-  res.redirect(
-    process.env.NODE_ENV === "development"
-      ? `http://localhost:${port}/graphql`
-      : `https://tourismagency2023.onrender.com/graphql`
-  );
-});
-app.get("/graphql", requireGoogleAuth, (req, res) => {
-  res.redirect(
-    process.env.NODE_ENV == "development"
-      ? `http://localhost:${port}/graphql`
-      : `https://tourismagency2023.onrender.com/graphql`
-  );
-});
+app.get('/api-docs',(req,res)=>res.redirect(`https://tourguideagency.onrender.com/graphql`))
+
 
 export async function start() {
   const server = new ApolloServer({
@@ -66,13 +60,6 @@ export async function start() {
   await server.start();
   server.applyMiddleware({ app });
   app.use(serverErrorHandler);
-  app.use((req, res, next) => {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://tu-usuario-de-github.github.io"
-    );
-    next();
-  });
   app.get("*", (req, res) => res.send("404 not found"));
   app.listen({ port }, () => {
     console.log(

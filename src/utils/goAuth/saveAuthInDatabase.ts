@@ -6,7 +6,7 @@ export async function saveAuthInDatabase(req, res) {
     const { tokens, email } = await authorizeWithGoogle(code);
     try {
       await userResolvers.Mutation.registerUserGoogleAuth(null, {
-        email:email,
+        email: email,
         googleAccessToken: tokens.access_token,
         googleRefreshToken: tokens.refresh_token,
         googleScope: tokens.scope,
@@ -15,11 +15,12 @@ export async function saveAuthInDatabase(req, res) {
         googleExpiryDate: new Date(tokens.expiry_date),
       });
       console.log("Tokens guardados en la base de datos");
-      res.cookie("userId", tokens.id_token, { httpOnly: true, sameSite: "none", secure: true, maxAge: tokens.expiry_date }); 
-      console.log("Cookies guardadas");
+      req.session.userId = tokens.id_token; // Guardar el ID del usuario en la sesión
+      console.log("Sesión guardada");
+      res.redirect("/graphql");
     } catch (error) {
       console.error(error);
     }
-    res.redirect("/");
   }
+  
   
