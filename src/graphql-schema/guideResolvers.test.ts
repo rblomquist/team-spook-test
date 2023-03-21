@@ -13,8 +13,9 @@ beforeAll(async () => {
     await mongoose.connection.close();
   });
   
-test ("Gets all guides", () => {
+test ("Gets all guides", async () => {
     expect(guideResolvers.Query.getAllguides).not.toThrowError();
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Gets guide by ID number", async () => {
@@ -41,6 +42,7 @@ test("Gets guide by ID number", async () => {
     expect(foundGuide.databaseAccessLevel).toEqual(newGuide.databaseAccessLevel);
 
     await Guide.deleteOne({ _id: foundGuide._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Adds guide to db", async () => {
@@ -65,6 +67,7 @@ test("Adds guide to db", async () => {
     expect(newGuide.databaseAccessLevel.toString()).toEqual(guide.databaseAccessLevel);
 
     await Guide.deleteOne({ _id: newGuide._id });
+    await new Promise(resolve => setTimeout(resolve, 1000));
   });
 
 test("Updates guide in db", async () => {
@@ -102,7 +105,7 @@ test("Updates guide in db", async () => {
     expect(updatedGuide.databaseAccessLevel.toString()).toEqual(args.databaseAccessLevel);
 
     await Guide.deleteOne({ _id: updatedGuide._id });
-
+    await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 test("Deletes guide from db", async () => {    
@@ -131,4 +134,5 @@ test("Deletes guide from db", async () => {
     const deletedGuide = await guideResolvers.Mutation.deleteGuide(null, { id: foundGuide.id })
 
     expect(deletedGuide).toBe(deletedGuide);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     });
