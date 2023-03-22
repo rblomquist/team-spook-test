@@ -20,10 +20,10 @@ test ("Gets all agents", async () => {
 
 test("Gets employee by ID number", async () => {
     const newAgent = new Agent({ 
-        email: 'agent@example.com',
-        password: 'password',
-        firstName: 'John',
-        lastName: 'Doe',
+      email: 'tourismagency2023.agent007@gmail.com',
+        password: 'Mis$M0neyPenny',
+        firstName: 'James',
+        lastName: 'Bond',
         phone: '1234567890',
         databaseAccessLevel: 1,
       });
@@ -43,10 +43,10 @@ test("Gets employee by ID number", async () => {
 
 test("Adds agent to db", async () => {
 const args = {
-      email: 'agent@example.com',
-      password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      email: 'tourismagency2023.agent007@gmail.com',
+      password: 'Mis$M0neyPenny',
+      firstName: 'James',
+      lastName: 'Bond',
       phone: '1234567890',
       databaseAccessLevel: 1,
     };
@@ -63,10 +63,10 @@ const args = {
 
 test("Updates agent in db", async () => {
     const agent = new Agent({ 
-      email: 'agent@example.com',
-      password: 'password',
-      firstName: 'John',
-      lastName: 'Doe',
+      email: 'tourismagency2023.agent007@gmail.com',
+      password: 'Mis$M0neyPenny',
+      firstName: 'James',
+      lastName: 'Bond',
       phone: '1234567890',
       databaseAccessLevel: 1,
     });
@@ -75,11 +75,12 @@ test("Updates agent in db", async () => {
 
     const args = {
           id: newAgent._id,
-          email: "updateTest@test.com",
-          firstName: "Test",
-          lastName: "Testerton",
-          phone: "123-456-7890",
-          databaseAccessLevel: 1
+          email: 'tourismagency2023.agent007@gmail.com',
+          password: 'Mis$M0neyPenny',
+          firstName: 'James',
+          lastName: 'Bond',
+          phone: '1234567899',
+          databaseAccessLevel: 1,
       };
 
     const updatedAgent = await agentResolvers.Mutation.updateAgent(null, args);
@@ -97,10 +98,10 @@ test("Updates agent in db", async () => {
 
 test("Deletes agent from db", async () => {    
         const newAgent = new Agent({ 
-            email: 'agent@example.com',
-            password: 'password',
-            firstName: 'John',
-            lastName: 'Doe',
+          email: 'tourismagency2023.agent007@gmail.com',
+            password: 'Mis$M0neyPenny',
+            firstName: 'James',
+            lastName: 'Bond',
             phone: '1234567890',
             databaseAccessLevel: 1,
           });

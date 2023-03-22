@@ -20,16 +20,16 @@ test ("Gets all destinations", async () => {
 
 test("Gets destination by ID number", async () => {
     const destination = new Destination({ 
-        country: 'USA',
-        city: 'New York',
-        currency: 'dollars',
-        language: 'English',
-        description: 'Big metropolitan city',
-        meals: "American",
-        lodging: "hotels",
-        price: 5000,
-        Bus_id: 2,
-        image: "NewYork.jpeg"
+      country: 'USA',
+      city: 'New-York',
+      currency: 'USD',
+      language: 'English',
+      description: 'Big-Apple',
+      meals: "American",
+      lodging: "Marriott",
+      price: 5000,
+      Bus_id: 2,
+      image: "NewYork.jpeg"
       });
     const newDestination = await destination.save();
 ;
@@ -52,16 +52,16 @@ test("Gets destination by ID number", async () => {
 
 test("Adds destination to db", async () => {
     const destination = {
-        country: 'USA',
-        city: 'New York',
-        currency: 'dollars',
-        language: 'English',
-        description: 'Big metropolitan city',
-        meals: "American",
-        lodging: "hotels",
-        price: 5000,
-        Bus_id: 2,
-        image: "NewYork.jpeg"
+      country: 'USA',
+      city: 'New-York',
+      currency: 'USD',
+      language: 'English',
+      description: 'Big-Apple',
+      meals: "American",
+      lodging: "Marriott",
+      price: 5000,
+      Bus_id: 2,
+      image: "NewYork.jpeg"
     };
 
     const newDestination = await destinationResolvers.Mutation.createDestination(null, destination);
@@ -83,31 +83,30 @@ test("Adds destination to db", async () => {
 
 test("Updates destination in db", async () => {
     const destination = new Destination({ 
-        country: 'USA',
-        city: 'New York',
-        currency: 'dollars',
-        language: 'English',
-        description: 'Big metropolitan city',
-        meals: "American",
-        lodging: "hotels",
-        price: 5000,
-        Bus_id: 2,
-        image: "NewYork.jpeg"
+      country: 'USA',
+      city: 'New-York',
+      currency: 'USD',
+      language: 'English',
+      description: 'Big-Apple',
+      meals: "American",
+      lodging: "Marriott",
+      price: 5000,
+      Bus_id: 2,
+      image: "NewYork.jpeg"
       });
     const newDestination = await destination.save();
     
     const args = {
-        id: newDestination._id,
-        country: 'USA',
-        city: 'New York',
-        currency: 'dollars',
-        language: 'English',
-        description: 'Big metropolitan city',
-        meals: "American",
-        lodging: "Air-BnB",
-        price: 5000,
-        Bus_id: 2,
-        image: "NewYork.jpeg"
+      country: 'USA',
+      city: 'New-York',
+      currency: 'USD',
+      language: 'English',
+      description: 'Big-Apple',
+      meals: "American",
+      lodging: "Airbnb",
+      price: 5000,
+      Bus_id: 2,
+      image: "NewYork.jpeg"
     };
 
     const updatedDestination = await destinationResolvers.Mutation.updateDestination(null, args);
@@ -129,16 +128,16 @@ test("Updates destination in db", async () => {
 
 test("Deletes destination from db", async () => {    
     const destination = new Destination({ 
-        country: 'USA',
-        city: 'New York',
-        currency: 'dollars',
-        language: 'English',
-        description: 'Big metropolitan city',
-        meals: "American",
-        lodging: "hotels",
-        price: 5000,
-        Bus_id: 2,
-        image: "NewYork.jpeg"
+      country: 'USA',
+      city: 'New-York',
+      currency: 'USD',
+      language: 'English',
+      description: 'Big-Apple',
+      meals: "American",
+      lodging: "Marriott",
+      price: 5000,
+      Bus_id: 2,
+      image: "NewYork.jpeg"
       });
     const newDestination = await destination.save();
 

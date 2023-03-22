@@ -76,10 +76,6 @@ const guideSchema = new Schema({
     type: String,
     required: true,
   },
-  bio: {
-    type: String,
-    required: true
-  },
   databaseAccessLevel: {
     type: Number,
     required: true,

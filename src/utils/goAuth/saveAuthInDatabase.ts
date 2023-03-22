@@ -14,9 +14,9 @@ export async function saveAuthInDatabase(req, res) {
         googleIdToken: tokens.id_token,
         googleExpiryDate: new Date(tokens.expiry_date),
       });
-      console.log("Tokens guardados en la base de datos");
-      req.session.userId = tokens.id_token; // Guardar el ID del usuario en la sesión
-      console.log("Sesión guardada");
+      console.log("Tokens saved in the database. Tokens guardados en la base de datos");
+      req.session.userId = tokens.id_token; // Save user ID in session. Guardar el ID del usuario en la sesión.
+      console.log("Session saved. Sesión guardada");
       res.redirect("/graphql");
     } catch (error) {
       console.error(error);

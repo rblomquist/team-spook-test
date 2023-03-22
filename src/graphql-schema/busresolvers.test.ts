@@ -20,13 +20,13 @@ test ("Gets all buses", async () => {
 
 test("Gets bus by ID number", async () => {
     const bus = new Bus({ 
-        Name: "bus",
-        Description: 'yellow bus',
+        Name: "Red-Line",
+        Description: 'Times-Square-Excursion',
         Tour_Guide: 'John',
         Total_Seat: 10,
         Empty_Seat: 2,
         Full_Seat: 8,
-        Patent: "What is this?"
+        Patent: "NY-CWGM438"
       });
     const newBus = await bus.save();
 ;
@@ -46,13 +46,13 @@ test("Gets bus by ID number", async () => {
 
 test("Adds bus to db", async () => {
 const bus = {
-    Name: "bus",
-    Description: 'yellow bus',
-    Tour_Guide: 'John',
-    Total_Seat: 10,
-    Empty_Seat: 2,
-    Full_Seat: 8,
-    Patent: "What is this?"
+  Name: "Red-Line",
+  Description: 'Times-Square-Excursion',
+  Tour_Guide: 'John',
+  Total_Seat: 10,
+  Empty_Seat: 2,
+  Full_Seat: 8,
+  Patent: "NY-CWGM438"
 };
 
     const newBus = await busResolvers.Mutation.createBus(null, bus);
@@ -71,27 +71,26 @@ const bus = {
 
 test("Updates bus in db", async () => {
     const bus = new Bus({ 
-        Name: "bus",
-        Description: 'yellow bus',
+        Name: "Red-Line",
+        Description: 'Times-Square-Excursion',
         Tour_Guide: 'John',
         Total_Seat: 10,
         Empty_Seat: 2,
         Full_Seat: 8,
-        Patent: "What is this?"
+        Patent: "NY-CWGM438"
       });
 
     const newBus = await bus.save();
 
     const args = {
-        id: newBus._id,
-        Name: "bus",
-        Description: 'yellow bus',
-        Tour_Guide: 'Patrick',
-        Total_Seat: 10,
-        Empty_Seat: 2,
-        Full_Seat: 8,
-        Patent: "What is this?"
-      };
+      Name: "Red-Line",
+      Description: 'Times-Square-Excursion',
+      Tour_Guide: 'Patrick',
+      Total_Seat: 10,
+      Empty_Seat: 2,
+      Full_Seat: 8,
+      Patent: "NY-CWGM438"
+    };
 
     const updatedBus = await busResolvers.Mutation.updateBus(null, args);
 
@@ -109,13 +108,13 @@ test("Updates bus in db", async () => {
 
 test("Deletes bus from db", async () => {    
         const bus = new Bus({ 
-            Name: "bus",
-            Description: 'yellow bus',
-            Tour_Guide: 'John',
-            Total_Seat: 10,
-            Empty_Seat: 2,
-            Full_Seat: 8,
-            Patent: "What is this?"
+          Name: "Red-Line",
+          Description: 'Times-Square-Excursion',
+          Tour_Guide: 'John',
+          Total_Seat: 10,
+          Empty_Seat: 2,
+          Full_Seat: 8,
+          Patent: "NY-CWGM438"
         });
         const newBus = await bus.save();
 

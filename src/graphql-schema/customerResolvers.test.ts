@@ -20,9 +20,9 @@ test ("Gets all customers", async () => {
 
 test("Gets customer by ID number", async () => {
     const customer = new Customer({ 
-        firstName: "John",
-        lastName: 'Doe',
-        email: 'JohnDoe@email.com',
+        firstName: "Marco",
+        lastName: 'Polo',
+        email: 'tourismagency2023.customer.polo@gmail.com',
         phone: "123-456-7890",
         emergency_phone: "123-456-7890",
         passport: "1234567890",
@@ -46,13 +46,13 @@ test("Gets customer by ID number", async () => {
 
 test("Adds customer to db", async () => {
     const customer = { 
-        firstName: "John",
-        lastName: 'Doe',
-        email: 'JohnDoe@email.com',
-        phone: "123-456-7890",
-        emergency_phone: "123-456-7890",
-        passport: "1234567890",
-        seat: 1
+      firstName: "Marco",
+      lastName: 'Polo',
+      email: 'tourismagency2023.customer.polo@gmail.com',
+      phone: "123-456-7890",
+      emergency_phone: "123-456-7890",
+      passport: "1234567890",
+      seat: 1
       };
 
     const newCustomer = await customerResolvers.Mutation.createCustomer(null, customer);
@@ -71,24 +71,24 @@ test("Adds customer to db", async () => {
 
 test("Updates customer in db", async () => {
     const customer = new Customer({ 
-        firstName: "John",
-        lastName: 'Doe',
-        email: 'JohnDoe@email.com',
-        phone: "123-456-7890",
-        emergency_phone: "123-456-7890",
-        passport: "1234567890",
-        seat: 1
+      firstName: "Marco",
+      lastName: 'Polo',
+      email: 'tourismagency2023.customer.polo@gmail.com',
+      phone: "123-456-7890",
+      emergency_phone: "123-456-7890",
+      passport: "1234567890",
+      seat: 1
       });
     const newCustomer = await customer.save();
 
     const args = {
         id: newCustomer._id,
-        firstName: "John",
-        lastName: 'Doe',
-        email: 'JohnDoe@email.com',
+        firstName: "Marco",
+        lastName: 'Polo',
+        email: 'tourismagency2023.customer.polo@gmail.com',
         phone: "123-456-7890",
-        emergency_phone: "123-456-7890",
-        passport: "0987654321",
+        emergency_phone: "123-456-7899",
+        passport: "1234567890",
         seat: 1
       };
 
@@ -108,13 +108,13 @@ test("Updates customer in db", async () => {
 
 test("Deletes customer from db", async () => {    
     const customer = new Customer({ 
-        firstName: "John",
-        lastName: 'Doe',
-        email: 'JohnDoe@email.com',
-        phone: "123-456-7890",
-        emergency_phone: "123-456-7890",
-        passport: "1234567890",
-        seat: 1
+      firstName: "Marco",
+      lastName: 'Polo',
+      email: 'tourismagency2023.customer.polo@gmail.com',
+      phone: "123-456-7890",
+      emergency_phone: "123-456-7890",
+      passport: "1234567890",
+      seat: 1
       });
     const newCustomer = await customer.save();
 

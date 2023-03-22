@@ -46,7 +46,6 @@ export const typeDefs = gql`
     email: String
     phone: String
     languages: String
-    bio: String
     databaseAccessLevel: Int
   }
 
@@ -145,7 +144,6 @@ export const typeDefs = gql`
       email: String!
       phone: String!
       languages: String!
-      bio: String!
       databaseAccessLevel: Int!
     ): Guide!
     updateGuide(
@@ -155,7 +153,6 @@ export const typeDefs = gql`
       email: String
       phone: String
       languages: String
-      bio: String
       databaseAccessLevel: Int
     ): Guide!
     deleteGuide(id: ID!): String!
