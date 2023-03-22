@@ -3,8 +3,8 @@ import { UserGoogleAuth } from '../../models/collections.js';
 
 export const requireGoogleAuth = async (req, res, next) => {
   const link = process.env.NODE_ENV == "development"
-    ? "https://tourismagency2023.onrender.com" 
-    : "http://localhost:4000";
+    ? "http://localhost:4000"
+    : "https://tourismagency2023.onrender.com";
   const userId = req.session.userId; // Read user ID from session. Leer el ID del usuario desde la sesión
 
   if (!userId) {
